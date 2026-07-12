@@ -1,39 +1,34 @@
-# Hi, I'm Jamie Parr
+# Jamie Parr
 
-I am a second-year BSc (Hons) Computing Technologies student at Ulster University in Belfast. I build practical web projects alongside university and part-time work, mostly around accessible interfaces, clear user journeys, privacy and reliable deployment. At the minute I am improving my portfolio, refining an AI chat experiment and developing a small-business service site while studying.
+Second-year BSc (Hons) Computing Technologies at Ulster University, Belfast.
+
+Most of what I build ends up in front of somebody. A radio station with daily listeners, a service site that real businesses email, an AI chat anyone can walk into. That is a different job from building for a deadline, and it is the part I actually like: the bit after it works, where it has to keep working.
 
 [Portfolio](https://jamie-parr-portfolio.netlify.app/) · [LinkedIn](https://www.linkedin.com/in/jamie-parr-577783292)
 
-## Selected Projects
+## Projects
 
-| Project | Summary | Live | Code |
+| Project | What it actually is | Live | Code |
 | --- | --- | --- | --- |
-| **Jamie Parr Portfolio** | An accessible static portfolio with responsive case studies, persistent display preferences and automated site checks. | [View site](https://jamie-parr-portfolio.netlify.app/) | [View repo](https://github.com/JamieP-205/jamie-parr-portfolio) |
-| **Local Web Fix** | A service website with a Netlify Forms enquiry flow, clear scope and privacy pages and reusable client-work templates. | [View site](https://localwebfix.co.uk/) | [View repo](https://github.com/JamieP-205/local-web-fix) |
-| **Coast Internet Radio** | A production radio website with a live player, programme-aware metadata, private content tools, first-party analytics, feedback, Netlify Functions and Cloudflare Workers. | [View site](https://coastinternetradio.com/) | [View repo](https://github.com/JamieP-205/coast-internet-radio) |
-| **Talk With Jamie** | A disclosed AI chat experiment with accounts, guest sessions, signed cookies, password hashing, persistent conversations, rate limits and private admin tools. | [View site](https://talkwithjamie.netlify.app/) | [View repo](https://github.com/JamieP-205/talk-with-jamie) |
+| **Coast Internet Radio** | The site for a small station in Newry with real listeners. Its stream is HTTP and the site is HTTPS, which browsers refuse to play, so the audio goes through two Cloudflare Workers. Serverless admin area so the owner can run it without me, play history, and analytics I wrote rather than installed. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
+| **Talk With Jamie** | A disclosed AI chat that answers as me. The interesting part is not the chat, it is the access control: a stranger and I get answers built from completely different context, and the retrieval layer enforces that, not the prompt. | [Site](https://talkwithjamie.netlify.app/) | [Repo](https://github.com/JamieP-205/talk-with-jamie) |
+| **Local Web Fix** | A small service site. Businesses send me a link and I check whether a customer can find their opening hours, menu and phone number. Mostly an exercise in writing honestly about price and scope. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
+| **Portfolio** | Four pages, no framework, no build step. CV, case studies, and a live panel that pulls the real Coast listener count. | [Site](https://jamie-parr-portfolio.netlify.app/) | [Repo](https://github.com/JamieP-205/jamie-parr-portfolio) |
 
-## Technical skills
+## What I use
 
-- HTML, CSS and JavaScript
-- Node.js and serverless functions
-- Responsive and accessible web design
-- Netlify, Netlify Forms and Netlify Blobs
-- Cloudflare Workers
-- Git, GitHub and GitHub Actions
-- Python fundamentals
-- Testing, troubleshooting and technical documentation
+HTML, CSS and JavaScript. Node, Netlify Functions, Cloudflare Workers, Netlify Blobs. GitHub Actions. Enough Python to be useful.
 
 ## How I work
 
-I prefer small, understandable solutions over adding tools for their own sake. Across my projects I use semantic HTML, keyboard-friendly controls, clear privacy boundaries, environment-based secrets, repeatable checks and documentation that explains the decisions behind the code.
+I would rather delete code than add it, and I would rather ship a small thing that works than a large thing that nearly does. If I add a dependency I want to be able to say why.
 
-My projects naturally cover different levels of complexity: a focused static portfolio, a real service workflow, a production radio platform and a stateful serverless application with authentication and persistence.
+I write down the things I got wrong, in the repo, where the next person hits them. Every project here has a section listing what is still broken or missing, because a README that only lists strengths is a sales page and I have never trusted one.
 
-## Education and certification
+## Education
 
-- **BSc (Hons) Computing Technologies**, Ulster University, 2025-2029 expected
+- **BSc (Hons) Computing Technologies**, Ulster University, 2025 to 2029 expected
 - **Level 3 Extended Diploma in Technology**, Southern Regional College, D*DD
-- **Information Technology Specialist in HTML & CSS**, Certiport
+- **IT Specialist in HTML & CSS**, Certiport
 
-I am interested in entry-level IT support, helpdesk, junior web, technical support, admin and other practical technology roles where I can keep learning.
+Looking for entry-level IT support, helpdesk, junior web or technical support work where I can keep learning.
