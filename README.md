@@ -1,8 +1,8 @@
 # Jamie Parr
 
-Second-year BSc (Hons) Computing Technologies at Ulster University, Belfast.
+Computing Technologies student at Ulster University in Belfast. I start second year in September 2026.
 
-Most of what I build ends up in front of somebody. A radio station with daily listeners, a service site that real businesses email, an AI chat anyone can walk into. That is a different job from building for a deadline, and it is the part I actually like: the bit after it works, where it has to keep working.
+Most of what I build ends up in front of somebody. A radio station with daily listeners, a public service site and an AI chat anyone can open. That is a different job from building for a deadline, and it is the part I actually like: the bit after it works, where it has to keep working.
 
 [Portfolio](https://jamie-parr-portfolio.netlify.app/) · [LinkedIn](https://www.linkedin.com/in/jamie-parr-577783292)
 
@@ -31,4 +31,4 @@ I write down the things I got wrong, in the repo, where the next person hits the
 - **Level 3 Extended Diploma in Technology**, Southern Regional College, D*DD
 - **IT Specialist in HTML & CSS**, Certiport
 
-Looking for entry-level IT support, helpdesk, junior web or technical support work where I can keep learning.
+I am preparing early for a third-year placement in 2027/28, ideally in IT support, web development or another practical technical role where I can keep learning.
