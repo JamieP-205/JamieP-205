@@ -1,29 +1,44 @@
 # Jamie Parr
 
-Computing Technologies student at Ulster University in Belfast. I start second year in September 2026.
+I'm a Computing Technologies student at Ulster University in Belfast, starting
+second year in September 2026.
 
-Most of what I build ends up in front of somebody. A radio station with daily listeners, a public service site and an AI chat anyone can open. That is a different job from building for a deadline, and it is the part I actually like: the bit after it works, where it has to keep working.
+I enjoy the awkward part of a project: working out the real constraint, keeping
+the code understandable and proving that the finished thing behaves properly.
+That has taken me from a production radio site to a Godot campaign, a
+French-learning platform and a study system for my own degree.
 
-[Portfolio](https://jamie-parr-portfolio.netlify.app/) · [LinkedIn](https://www.linkedin.com/in/jamie-parr-577783292)
+[Portfolio](https://jamie-parr-portfolio.netlify.app/) |
+[LinkedIn](https://www.linkedin.com/in/jamie-parr-577783292)
 
-## Projects
+## Selected projects
 
-| Project | What it actually is | Live | Code |
+| Project | What I built | Try it | Source |
 | --- | --- | --- | --- |
-| **Coast Internet Radio** | The site for a small station in Newry with real listeners. Its stream is HTTP and the site is HTTPS, which browsers refuse to play, so the audio goes through two Cloudflare Workers. Serverless admin area so the owner can run it without me, play history, and analytics I wrote rather than installed. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
-| **Talk With Jamie** | A disclosed AI chat that answers as me. The interesting part is not the chat, it is the access control: a stranger and I get answers built from completely different context, and the retrieval layer enforces that, not the prompt. | [Site](https://talkwithjamie.netlify.app/) | [Repo](https://github.com/JamieP-205/talk-with-jamie) |
-| **Local Web Fix** | A small service site. Businesses send me a link and I check whether a customer can find their opening hours, menu and phone number. Mostly an exercise in writing honestly about price and scope. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
-| **Portfolio** | Four pages, no framework, no build step. CV, case studies, and a live panel that pulls the real Coast listener count. | [Site](https://jamie-parr-portfolio.netlify.app/) | [Repo](https://github.com/JamieP-205/jamie-parr-portfolio) |
+| **The World Forgot Us** | A four-area Godot road-story campaign with persistent state, combat, upgrades, environmental puzzles and three endings. Its CI imports the project, runs a complete campaign smoke test and exports the browser build. | [Play](https://jamiep-205.github.io/the-world-forgot-us/) | [Repo](https://github.com/JamieP-205/the-world-forgot-us) |
+| **French for Life** | A full-stack French-learning app built around a strict teach-before-test rule. The public route works without an account; curriculum checks, deterministic scoring and browser tests guard what counts as learning evidence. | [Demo](https://french-learning-platform-one.vercel.app) | [Public snapshot](https://github.com/JamieP-205/french-learning-platform) |
+| **Groundwork** | A private local-first study app that chooses the next useful computing task from recorded evidence. It includes guided lessons, real in-browser SQLite exercises, progress migrations and a derived guidebook. | [Case study](https://jamie-parr-portfolio.netlify.app/#project-groundwork) | Private: contains my learning data and working plans |
+| **Coast Internet Radio** | A production site for a small Newry station, including stream relays, live metadata, an owner-run admin area, play history and first-party analytics. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
+| **Talk With Jamie** | A disclosed AI chat experiment where guest and owner retrieval are separated in code, not left to a prompt. It also has authentication, persistent conversations, rate limits and private admin tools. | [Site](https://talkwithjamie.netlify.app/) | [Repo](https://github.com/JamieP-205/talk-with-jamie) |
+| **Local Web Fix** | A small service site for practical business-web fixes. It is mainly an exercise in keeping the price, scope and limitations as clear as the implementation. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
 
 ## What I use
 
-HTML, CSS and JavaScript. Node, Netlify Functions, Cloudflare Workers, Netlify Blobs. GitHub Actions. Enough Python to be useful.
+TypeScript, React and Next.js; HTML, CSS and JavaScript; Node and serverless
+functions; Godot and GDScript; SQL, Supabase and SQLite; Python where it is the
+sensible tool. I use GitHub Actions, Playwright and focused unit tests to keep
+the important paths repeatable.
 
 ## How I work
 
-I would rather delete code than add it, and I would rather ship a small thing that works than a large thing that nearly does. If I add a dependency I want to be able to say why.
+I try to keep names plain, functions small and boundaries obvious. I would
+rather remove code than hide a simple idea behind another abstraction. When a
+project depends on privacy, persistence or learning evidence, I put that rule in
+code and test it instead of relying on a comment.
 
-I write down the things I got wrong, in the repo, where the next person hits them. Every project here has a section listing what is still broken or missing, because a README that only lists strengths is a sales page and I have never trusted one.
+The READMEs also say what is unfinished. A public demo is not a production
+launch, browser speech is not a pronunciation score, and a playable game is not
+the same thing as a fully balanced one.
 
 ## Education
 
@@ -31,4 +46,6 @@ I write down the things I got wrong, in the repo, where the next person hits the
 - **Level 3 Extended Diploma in Technology**, Southern Regional College, D*DD
 - **IT Specialist in HTML & CSS**, Certiport
 
-I am preparing early for a third-year placement in 2027/28, ideally in IT support, web development or another practical technical role where I can keep learning.
+I am preparing early for a third-year placement in 2027/28, ideally in IT
+support, web development or another practical technical role where I can keep
+learning.
