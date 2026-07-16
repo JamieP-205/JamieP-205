@@ -1,12 +1,18 @@
 # Jamie Parr
 
-I'm a Computing Technologies student at Ulster University in Belfast, starting
-second year in September 2026.
+I'm a BSc (Hons) Computing Technologies student at Ulster University in
+Belfast, entering second year in September 2026. My second-year employability
+module will prepare me to apply for a third-year placement in 2027/28.
 
 I enjoy the awkward part of a project: working out the real constraint, keeping
 the code understandable and proving that the finished thing behaves properly.
 That has taken me from a production radio site to a Godot campaign, a
 French-learning platform and a study system for my own degree.
+
+This GitHub account is newer than my programming experience. I opened it in
+June 2026 after roughly four years of learning through college, university and
+projects built in my own time. I am not presenting one month of GitHub activity
+as one month of learning.
 
 [Portfolio](https://jamie-parr-portfolio.netlify.app/) |
 [LinkedIn](https://www.linkedin.com/in/jamie-parr-577783292)
@@ -18,7 +24,7 @@ French-learning platform and a study system for my own degree.
 | **The World Forgot Us** | A four-area Godot road-story campaign with persistent state, combat, upgrades, environmental puzzles and three endings. Its CI imports the project, runs a complete campaign smoke test and exports the browser build. | [Play](https://jamiep-205.github.io/the-world-forgot-us/) | [Repo](https://github.com/JamieP-205/the-world-forgot-us) |
 | **French for Life** | A full-stack French-learning app built around a strict teach-before-test rule. The public route works without an account; curriculum checks, deterministic scoring and browser tests guard what counts as learning evidence. | [Demo](https://french-learning-platform-one.vercel.app) | [Public snapshot](https://github.com/JamieP-205/french-learning-platform) |
 | **Groundwork** | A private local-first study app that chooses the next useful computing task from recorded evidence. It includes guided lessons, real in-browser SQLite exercises, progress migrations and a derived guidebook. | [Case study](https://jamie-parr-portfolio.netlify.app/#project-groundwork) | Private: contains my learning data and working plans |
-| **Coast Internet Radio** | A production site for a small Newry station, including stream relays, live metadata, an owner-run admin area, play history and first-party analytics. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
+| **Coast Internet Radio** | A stakeholder-led redevelopment for a small Newry station. I worked with the station owner to modernise the listener experience, then built stream relays, live metadata, an owner-run admin area, play history and first-party analytics. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
 | **Talk With Jamie** | A disclosed AI chat experiment where guest and owner retrieval are separated in code, not left to a prompt. It also has authentication, persistent conversations, rate limits and private admin tools. | [Site](https://talkwithjamie.netlify.app/) | [Repo](https://github.com/JamieP-205/talk-with-jamie) |
 | **Local Web Fix** | A small service site for practical business-web fixes. It is mainly an exercise in keeping the price, scope and limitations as clear as the implementation. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
 
@@ -40,12 +46,23 @@ The READMEs also say what is unfinished. A public demo is not a production
 launch, browser speech is not a pronunciation score, and a playable game is not
 the same thing as a fully balanced one.
 
+I use AI tools during development for ideas, debugging and review. I do not
+treat generated output as proof that something works. I read and simplify the
+changes, run the relevant checks and keep responsibility for what I merge. When
+AI materially helped with an advanced area, such as authentication, privacy
+boundaries, the Godot runtime builder or asset generation, the project README
+and credits say what it was used for and how I checked it.
+
 ## Education
 
 - **BSc (Hons) Computing Technologies**, Ulster University, 2025 to 2029 expected
 - **Level 3 Extended Diploma in Technology**, Southern Regional College, D*DD
 - **IT Specialist in HTML & CSS**, Certiport
 
-I am preparing early for a third-year placement in 2027/28, ideally in IT
-support, web development or another practical technical role where I can keep
-learning.
+I am preparing for a third-year placement in 2027/28, ideally in software, web
+development or another practical technical role where I can contribute to a
+team and keep learning.
+
+[Email](mailto:jamieparr205@gmail.com) |
+[GitHub](https://github.com/JamieP-205) |
+[Portfolio](https://jamie-parr-portfolio.netlify.app/)
