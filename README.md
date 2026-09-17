@@ -28,9 +28,6 @@ I try to keep things simple enough that I can come back later and still understa
 what I was doing. I prefer fixing the actual problem over adding another layer or
 dependency, and I test the parts that would be painful to break.
 
-I sometimes use AI tools for ideas, debugging or review, but I only keep changes I
-understand and have checked myself.
-
 ## Education
 
 - **BSc (Hons) Computing Technologies**, Ulster University, 2025 to 2029 expected
