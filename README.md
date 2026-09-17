@@ -1,18 +1,11 @@
 # Jamie Parr
 
-I'm a BSc (Hons) Computing Technologies student at Ulster University in
-Belfast, entering second year in September 2026. My second-year employability
-module will prepare me to apply for a third-year placement in 2027/28.
+I'm a BSc (Hons) Computing Technologies student at Ulster University in Belfast,
+currently in second year and preparing for a 2027/28 placement.
 
-I enjoy the awkward part of a project: working out the real constraint, keeping
-the code understandable and proving that the finished thing behaves properly.
-Most of my recent work has focused on practical web development, deployment,
-automation and building useful software around real requirements.
-
-This GitHub account is newer than my programming experience. I opened it in
-June 2026 after roughly four years of learning through college, university and
-projects built in my own time. I am not presenting one month of GitHub activity
-as one month of learning.
+I mainly build web projects and small tools that solve something practical. I like
+working through the awkward bits, keeping the code understandable and getting a
+project to the point where it actually works reliably outside my own machine.
 
 [Portfolio](https://jamie-parr-portfolio.netlify.app/) |
 [LinkedIn](https://www.linkedin.com/in/jamie-parr-577783292)
@@ -21,29 +14,22 @@ as one month of learning.
 
 | Project | What I built | Try it | Source |
 | --- | --- | --- | --- |
-| **Coast Internet Radio** | A stakeholder-led redevelopment for a small Newry station. I worked with the station owner to modernise the listener experience, then built stream relays, live metadata, an owner-run admin area, play history and first-party analytics. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
-| **Local Web Fix** | A small service site for practical business-web fixes. It is mainly an exercise in keeping the price, scope and limitations as clear as the implementation. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
+| **Coast Internet Radio** | I rebuilt the site for a small Newry radio station and added stream relays, live metadata, an owner admin area, play history and first-party analytics. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
+| **Local Web Fix** | A small service site for practical business website fixes, with a simple enquiry flow and clear pricing and scope. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
 
 ## What I use
 
-TypeScript, React and Next.js; HTML, CSS and JavaScript; Node and serverless
-functions; SQL and Supabase; Python where it is the sensible tool. I use GitHub
-Actions, Playwright and focused unit tests to keep the important paths
-repeatable.
+TypeScript, React, Next.js, HTML, CSS, JavaScript, Node, SQL, Supabase and Python.
+I also use GitHub Actions, Playwright and unit tests where they are useful.
 
 ## How I work
 
-I try to keep names plain, functions small and boundaries obvious. I would
-rather remove code than hide a simple idea behind another abstraction. When a
-project depends on privacy, persistence or important business rules, I put that
-rule in code and test it instead of relying on a comment.
+I try to keep things simple enough that I can come back later and still understand
+what I was doing. I prefer fixing the actual problem over adding another layer or
+dependency, and I test the parts that would be painful to break.
 
-The READMEs also say what is unfinished. A public demo is not a production
-launch, and a working feature is not the same thing as a finished product.
-
-I use AI tools during development for ideas, debugging and review. I do not
-treat generated output as proof that something works. I read and simplify the
-changes, run the relevant checks and keep responsibility for what I merge.
+I sometimes use AI tools for ideas, debugging or review, but I only keep changes I
+understand and have checked myself.
 
 ## Education
 
@@ -51,9 +37,8 @@ changes, run the relevant checks and keep responsibility for what I merge.
 - **Level 3 Extended Diploma in Technology**, Southern Regional College, D*DD
 - **IT Specialist in HTML & CSS**, Certiport
 
-I am preparing for a third-year placement in 2027/28, ideally in software, web
-development or another practical technical role where I can contribute to a
-team and keep learning.
+I'm looking for a 2027/28 placement in software, web development or another
+practical technical role where I can keep learning and contribute to a team.
 
 [Email](mailto:jamieparr205@gmail.com) |
 [GitHub](https://github.com/JamieP-205) |
