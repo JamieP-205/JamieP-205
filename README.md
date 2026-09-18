@@ -15,7 +15,7 @@ project to the point where it actually works reliably outside my own machine.
 | Project | What I built | Try it | Source |
 | --- | --- | --- | --- |
 | **Coast Internet Radio** | I rebuilt the site for a small Newry radio station and added stream relays, live metadata, an owner admin area, play history and first-party analytics. | [Site](https://coastinternetradio.com/) | [Repo](https://github.com/JamieP-205/coast-internet-radio) |
-| **Local Web Fix** | A small service site for practical business website fixes, with a simple enquiry flow and clear pricing and scope. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
+| **Local Web Fix** | A published business-site concept for small website fixes, built around clear scope, example pricing, safe access and a simple customer journey. It is not an active service. | [Site](https://localwebfix.co.uk/) | [Repo](https://github.com/JamieP-205/local-web-fix) |
 
 ## What I use
 
