@@ -9,15 +9,22 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 
 ## Projects
 
-- **[Coast Internet Radio](https://coastinternetradio.com)**: the website for a small radio station in Newry, with a live player, now playing with album covers, and an editor so the presenter can change the site himself. JavaScript, Netlify Functions and Cloudflare Workers. [Code](https://github.com/JamieP-205/coast-radio) and [case study](https://jamieparr.netlify.app/coast-internet-radio.html).
-- **[Coast Requests](https://github.com/JamieP-205/coast-requests)**: a Flask app that collects song requests from the Coast website into one list the presenter works through during live shows. Python, Flask, SQLAlchemy and pytest.
-- **[Portfolio](https://github.com/JamieP-205/portfolio)**: my portfolio site, in plain HTML and CSS with Playwright browser and accessibility tests.
+- **[Coast Internet Radio](https://coastinternetradio.com)**: the website for a small radio station in Newry, with a live player, now playing with album covers, and an editor so the presenter can change the site himself. JavaScript, nine Netlify Functions and Cloudflare Workers. Live since October 2026. [Code](https://github.com/JamieP-205/coast-radio) and [case study](https://jamieparr.netlify.app/coast-internet-radio.html).
+- **[Coast Requests](https://github.com/JamieP-205/coast-requests)**: a Flask app that collects song requests from the Coast website into one list the presenter works through during live shows. Python, Flask and SQLAlchemy, with 23 pytest tests that run on every push.
+- **[Portfolio](https://github.com/JamieP-205/portfolio)**: my portfolio site, in plain HTML and CSS, with six Playwright tests covering the pages and their accessibility.
+
+## Currently
+
+Studying Java this semester, and working on an Agile project in a team of five.
 
 ## Skills
-![Skills](https://skillicons.dev/icons?i=html,css,js,nodejs,python,flask,git,netlify,cloudflare,java)
 
-HTML, CSS, JavaScript, Node.js, Python, Flask, SQLAlchemy, Git and GitHub, Netlify, Cloudflare Workers and Playwright. This semester I'm studying Java, and working on an Agile project in a team of five.
+HTML, CSS, JavaScript, Node.js, Python, Flask, SQLAlchemy, Git and GitHub, Netlify, Cloudflare Workers and Playwright.
 
 ## Contact
 
 [jamieparr205@gmail.com](mailto:jamieparr205@gmail.com), [LinkedIn](https://www.linkedin.com/in/jamie-parr-tech) or [my CV](https://jamieparr.netlify.app/CV.pdf).
+
+---
+
+The header is a flocking simulation of the starlings, written in WebGL and rendered to WebP so it can live in a README. The source is in [`header/`](header/).
