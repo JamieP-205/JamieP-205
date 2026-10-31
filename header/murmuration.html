@@ -5,7 +5,9 @@
 </div>
 <script>
 const bcv=document.getElementById('b'),cv=document.getElementById('c');
-const RENDER=new URLSearchParams(location.search).has('render');
+const Q=new URLSearchParams(location.search),RENDER=Q.has('render'),LIGHT=Q.get('theme')==='light';
+if(LIGHT)document.getElementById('wrap').style.background='#ffffff';
+if(RENDER){document.documentElement.style.background='transparent';document.body.style.background='transparent';document.getElementById('wrap').style.background='transparent'}
 const gl=cv.getContext('webgl',{antialias:true,alpha:true,premultipliedAlpha:true,powerPreference:'high-performance',preserveDrawingBuffer:RENDER});
 const ext=gl&&gl.getExtension('ANGLE_instanced_arrays');
 const NB=5200,R=24,R2=R*R,S2=81,K=7,F=650,STEP=1/30,STR=7;
@@ -15,16 +17,15 @@ const px=F32(NB),py=F32(NB),pz=F32(NB),qx=F32(NB),qy=F32(NB),qz=F32(NB),vx=F32(N
  hx=F32(NB),hy=F32(NB),fl=F32(NB),fs_=F32(NB),fr=F32(NB),tx=F32(NB),ty=F32(NB),dl=F32(NB),lg=F32(NB),oa=F32(NB),ob=F32(NB),wf=F32(NB),inst=F32(NB*STR);
 function drawBg(){
   bcv.width=W*dpr;bcv.height=H*dpr;const g=bcv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
-  HY=H-6;const hy=HY;
-  g.fillStyle='#0d1117';g.fillRect(0,0,W,H);
-  let gl=g.createLinearGradient(0,hy-110,0,hy);gl.addColorStop(0,'rgba(88,166,255,0)');gl.addColorStop(1,'rgba(88,166,255,.07)');g.fillStyle=gl;g.fillRect(0,hy-110,W,110);
+  if(!RENDER){g.fillStyle=LIGHT?'#ffffff':'#0d1117';g.fillRect(0,0,W,H)}
 }
 let prog,uRes,ibuf;
 function setupGL(){
   const vs=`attribute vec3 aL;attribute vec4 aA;attribute vec3 aB;uniform vec2 uRes;varying float vS;
   void main(){vec2 h=aB.xy;vec2 n=vec2(-h.y,h.x);float c=abs(cos(aA.w));float side=mix(aL.y,aL.y*(0.3+0.7*c),aL.z);
   float lift=aL.z*sin(aA.w)*0.18;vec2 p=aA.xy+(h*aL.x+n*side)*aA.z+vec2(0.,-lift*aA.z);vec2 cl=p/uRes*2.-1.;gl_Position=vec4(cl.x,-cl.y,0.,1.);vS=aB.z;}`;
-  const fs=`precision mediump float;varying float vS;void main(){vec3 c=mix(vec3(.90,.93,.95),vec3(.42,.46,.50),vS);float a=mix(.9,.55,vS);gl_FragColor=vec4(c*a,a);}`;
+  const fs=LIGHT?`precision mediump float;varying float vS;void main(){vec3 c=mix(vec3(.12,.14,.16),vec3(.45,.49,.53),vS);float a=mix(.92,.55,vS);gl_FragColor=vec4(c*a,a);}`
+   :`precision mediump float;varying float vS;void main(){vec3 c=mix(vec3(.90,.93,.95),vec3(.42,.46,.50),vS);float a=mix(.9,.55,vS);gl_FragColor=vec4(c*a,a);}`;
   const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(o));return o};
   prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,vs));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);gl.useProgram(prog);
   const P={H:[.6,0,0],Sr:[.22,.13,0],Tr:[-.38,1,1],Wr:[-.18,.13,0],Lr:[-.62,.16,0],Ll:[-.62,-.16,0],Wl:[-.18,-.13,0],Tl:[-.38,-1,1],Sl:[.22,-.13,0],Mr:[.05,.55,1],Ml:[.05,-.55,1]};
@@ -43,10 +44,11 @@ function sampleText(){const o=document.createElement('canvas');o.width=W;o.heigh
   const d=g.getImageData(0,0,W,H).data,pts=[];for(let y=0;y<H;y+=2)for(let x=0;x<W;x+=2)if(d[(y*W+x)*4+3]>128)pts.push(x,y);
   const n=pts.length/2,idx=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.random()*(i+1)|0;[idx[i],idx[j]]=[idx[j],idx[i]]}
   for(let i=0;i<NB;i++){const j=idx[i%n]*2;tx[i]=pts[j]+Math.random()*1.2-.6;ty[i]=pts[j+1]+Math.random()*1.2-.6;dl[i]=Math.min(1,tx[i]/W*0.6+Math.random()*0.4)}}
-const A=[0.22,0.08,0.06,0.02],Wv=[0.23,0.5,0.27,0.63];
+const A=[0.22,0.06,0.06,0.015],Wv=[0.23,0.36,0.27,0.5];
 function L(t,o){const a=Wv[0]*t,b=Wv[1]*t+1,c=Wv[2]*t+2,d=Wv[3]*t,e=0.15*t+0.5,f=0.37*t;
-  o[0]=W2+W*(A[0]*Math.sin(a)+A[1]*Math.sin(b));o[1]=H*0.4+H*(A[2]*Math.sin(c)+A[3]*Math.sin(d));o[2]=90*Math.sin(e)+30*Math.sin(f);
-  o[3]=W*(A[0]*Wv[0]*Math.cos(a)+A[1]*Wv[1]*Math.cos(b));o[4]=H*(A[2]*Wv[2]*Math.cos(c)+A[3]*Wv[3]*Math.cos(d));o[5]=90*0.15*Math.cos(e)+30*0.37*Math.cos(f)}
+  o[0]=W2+W*(A[0]*Math.sin(a)+A[1]*Math.sin(b));o[1]=H*0.4+H*(A[2]*Math.sin(c)+A[3]*Math.sin(d));o[2]=70*Math.sin(e)+20*Math.sin(f);
+  o[3]=W*(A[0]*Wv[0]*Math.cos(a)+A[1]*Wv[1]*Math.cos(b));o[4]=H*(A[2]*Wv[2]*Math.cos(c)+A[3]*Wv[3]*Math.cos(d));o[5]=70*0.15*Math.cos(e)+20*0.37*Math.cos(f);
+  const k=1-0.7*anchor(t);o[0]=W2+(o[0]-W2)*k;o[1]=H*0.4+(o[1]-H*0.4)*k;o[2]*=k;o[3]*=k;o[4]*=k;o[5]*=k}
 const lo=F32(6);
 function target(i,t,out){
   const spread=3.2+3.6*(0.5+0.5*Math.sin(0.09*t)),l=lg[i];L(t-l*spread,lo);
@@ -63,7 +65,10 @@ function resize(){dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clie
   cv.width=W*dpr|0;cv.height=H*dpr|0;gl.viewport(0,0,cv.width,cv.height);
   XMIN=-W*0.5;cols=Math.ceil(W*2/R)+1;rows=Math.ceil(1000/R)+1;head=new Int32Array(cols*rows);drawBg();sampleText();init()}
 const ss=x=>x<=0?0:x>=1?1:x*x*x*(x*(6*x-15)+10);
-const T=34;function phase(t){const m=t%T;if(m<21)return 0;if(m<25.5)return(m-21)/4.5;if(m<29.5)return 1;return 1+(m-29.5)/4.5}
+// free flight 9 s, gather 4.5 s, hold the name 4 s, release 4.5 s
+const T=22,HOLD=13.5;function phase(t){const m=t%T;if(m<9)return 0;if(m<13.5)return(m-9)/4.5;if(m<17.5)return 1;return 1+(m-17.5)/4.5}
+// how strongly the flock's path is pulled toward the name's spot: eases in before the gather, eases out after the release
+function anchor(t){const m=t%T;if(m<6.5)return 0;if(m<9)return ss((m-6.5)/2.5);if(m<17.5)return 1;return 1-ss((m-17.5)/4)}
 let simT=0;
 // each bird blends three pulls: its place in the flowing flock, its 7 neighbours' heading, and a little personal space
 function step(dt){
@@ -111,5 +116,5 @@ else{setupGL();resize();if(!RENDER)requestAnimationFrame(frame)}
 // render API (used by render.mjs): advance the clock by dt seconds and draw one frame
 window.render=dt=>{cancelAnimationFrame(rafId);const n=Math.round(dt/STEP);for(let i=0;i<n;i++)step(STEP);acc=0;last=0;frame(0)};
 window.seek=s=>{const need=((s-(simT%T))%T+T)%T;const n=Math.round(need/STEP);for(let i=0;i<n;i++)step(STEP)};
-window.cycle=T;
+window.cycle=T;window.holdStart=HOLD;
 </script></body></html>
