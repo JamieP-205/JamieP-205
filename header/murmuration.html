@@ -1,0 +1,115 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Murmuration header</title><style>body{margin:0;background:#0d1117;padding:0}</style></head><body>
+<div id="wrap" style="position:relative;width:100%;height:300px;border-radius:0;overflow:hidden;background:#0d1117">
+<canvas id="b" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+<canvas id="c" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+</div>
+<script>
+const bcv=document.getElementById('b'),cv=document.getElementById('c');
+const RENDER=new URLSearchParams(location.search).has('render');
+const gl=cv.getContext('webgl',{antialias:true,alpha:true,premultipliedAlpha:true,powerPreference:'high-performance',preserveDrawingBuffer:RENDER});
+const ext=gl&&gl.getExtension('ANGLE_instanced_arrays');
+const NB=5200,R=24,R2=R*R,S2=81,K=7,F=650,STEP=1/30,STR=7;
+let W,H,W2,CY,dpr,HY,cols,rows,head,XMIN;
+const F32=n=>new Float32Array(n);
+const px=F32(NB),py=F32(NB),pz=F32(NB),qx=F32(NB),qy=F32(NB),qz=F32(NB),vx=F32(NB),vy=F32(NB),vz=F32(NB),nxt=new Int32Array(NB),
+ hx=F32(NB),hy=F32(NB),fl=F32(NB),fs_=F32(NB),fr=F32(NB),tx=F32(NB),ty=F32(NB),dl=F32(NB),lg=F32(NB),oa=F32(NB),ob=F32(NB),wf=F32(NB),inst=F32(NB*STR);
+function drawBg(){
+  bcv.width=W*dpr;bcv.height=H*dpr;const g=bcv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+  HY=H-6;const hy=HY;
+  g.fillStyle='#0d1117';g.fillRect(0,0,W,H);
+  let gl=g.createLinearGradient(0,hy-110,0,hy);gl.addColorStop(0,'rgba(88,166,255,0)');gl.addColorStop(1,'rgba(88,166,255,.07)');g.fillStyle=gl;g.fillRect(0,hy-110,W,110);
+}
+let prog,uRes,ibuf;
+function setupGL(){
+  const vs=`attribute vec3 aL;attribute vec4 aA;attribute vec3 aB;uniform vec2 uRes;varying float vS;
+  void main(){vec2 h=aB.xy;vec2 n=vec2(-h.y,h.x);float c=abs(cos(aA.w));float side=mix(aL.y,aL.y*(0.3+0.7*c),aL.z);
+  float lift=aL.z*sin(aA.w)*0.18;vec2 p=aA.xy+(h*aL.x+n*side)*aA.z+vec2(0.,-lift*aA.z);vec2 cl=p/uRes*2.-1.;gl_Position=vec4(cl.x,-cl.y,0.,1.);vS=aB.z;}`;
+  const fs=`precision mediump float;varying float vS;void main(){vec3 c=mix(vec3(.90,.93,.95),vec3(.42,.46,.50),vS);float a=mix(.9,.55,vS);gl_FragColor=vec4(c*a,a);}`;
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(o));return o};
+  prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,vs));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);gl.useProgram(prog);
+  const P={H:[.6,0,0],Sr:[.22,.13,0],Tr:[-.38,1,1],Wr:[-.18,.13,0],Lr:[-.62,.16,0],Ll:[-.62,-.16,0],Wl:[-.18,-.13,0],Tl:[-.38,-1,1],Sl:[.22,-.13,0],Mr:[.05,.55,1],Ml:[.05,-.55,1]};
+  const tris=[['H','Sr','Sl'],['Sr','Wr','Sl'],['Sl','Wr','Wl'],['Wr','Lr','Ll'],['Wr','Ll','Wl'],['Sr','Mr','Tr'],['Sr','Tr','Wr'],['Sl','Tl','Ml'],['Sl','Wl','Tl']];
+  const mesh=new Float32Array(tris.flat().flatMap(k=>P[k]));
+  const mb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,mb);gl.bufferData(gl.ARRAY_BUFFER,mesh,gl.STATIC_DRAW);
+  const aL=gl.getAttribLocation(prog,'aL');gl.enableVertexAttribArray(aL);gl.vertexAttribPointer(aL,3,gl.FLOAT,false,0,0);
+  ibuf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,ibuf);gl.bufferData(gl.ARRAY_BUFFER,inst.byteLength,gl.DYNAMIC_DRAW);
+  const aA=gl.getAttribLocation(prog,'aA'),aB=gl.getAttribLocation(prog,'aB');
+  gl.enableVertexAttribArray(aA);gl.vertexAttribPointer(aA,4,gl.FLOAT,false,STR*4,0);ext.vertexAttribDivisorANGLE(aA,1);
+  gl.enableVertexAttribArray(aB);gl.vertexAttribPointer(aB,3,gl.FLOAT,false,STR*4,16);ext.vertexAttribDivisorANGLE(aB,1);
+  uRes=gl.getUniformLocation(prog,'uRes');gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);gl.clearColor(0,0,0,0)}
+function sampleText(){const o=document.createElement('canvas');o.width=W;o.height=H;const g=o.getContext('2d',{willReadFrequently:true});
+  const fs=Math.min(H*0.3,W*0.1);g.font=`600 ${fs}px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif`;g.textAlign='center';g.textBaseline='middle';
+  if('letterSpacing'in g)g.letterSpacing=(fs*0.01)+'px';g.fillText('Jamie Parr',W/2,H*0.4);
+  const d=g.getImageData(0,0,W,H).data,pts=[];for(let y=0;y<H;y+=2)for(let x=0;x<W;x+=2)if(d[(y*W+x)*4+3]>128)pts.push(x,y);
+  const n=pts.length/2,idx=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.random()*(i+1)|0;[idx[i],idx[j]]=[idx[j],idx[i]]}
+  for(let i=0;i<NB;i++){const j=idx[i%n]*2;tx[i]=pts[j]+Math.random()*1.2-.6;ty[i]=pts[j+1]+Math.random()*1.2-.6;dl[i]=Math.min(1,tx[i]/W*0.6+Math.random()*0.4)}}
+const A=[0.22,0.08,0.06,0.02],Wv=[0.23,0.5,0.27,0.63];
+function L(t,o){const a=Wv[0]*t,b=Wv[1]*t+1,c=Wv[2]*t+2,d=Wv[3]*t,e=0.15*t+0.5,f=0.37*t;
+  o[0]=W2+W*(A[0]*Math.sin(a)+A[1]*Math.sin(b));o[1]=H*0.4+H*(A[2]*Math.sin(c)+A[3]*Math.sin(d));o[2]=90*Math.sin(e)+30*Math.sin(f);
+  o[3]=W*(A[0]*Wv[0]*Math.cos(a)+A[1]*Wv[1]*Math.cos(b));o[4]=H*(A[2]*Wv[2]*Math.cos(c)+A[3]*Wv[3]*Math.cos(d));o[5]=90*0.15*Math.cos(e)+30*0.37*Math.cos(f)}
+const lo=F32(6);
+function target(i,t,out){
+  const spread=3.2+3.6*(0.5+0.5*Math.sin(0.09*t)),l=lg[i];L(t-l*spread,lo);
+  const tl=Math.sqrt(lo[3]*lo[3]+lo[5]*lo[5])+1e-3,Nx=-lo[5]/tl,Nz=lo[3]/tl;
+  const wid=W*0.12*(1+0.35*Math.sin(0.14*t+1))*(0.65+0.35*Math.sin(6.28*l*1.2-0.35*t));
+  const wa=oa[i]+0.07*Math.sin(wf[i]*t+fr[i]),wb=ob[i]+0.07*Math.cos(wf[i]*0.8*t+fr[i]*1.7);
+  out[0]=lo[0]+Nx*wa*wid;out[1]=lo[1]+wb*wid*(0.4+0.18*Math.sin(0.21*t));out[2]=lo[2]+Nz*wa*wid;out[3]=lo[3];out[4]=lo[4];out[5]=lo[5]}
+const tg=F32(6);
+function init(){
+  for(let i=0;i<NB;i++){lg[i]=Math.pow(Math.random(),0.85);const a=Math.random()*6.283,rr=Math.pow(Math.random(),0.42);oa[i]=Math.cos(a)*rr;ob[i]=Math.sin(a)*rr;
+    wf[i]=0.25+Math.random()*0.5;fl[i]=Math.random()*6.28;fr[i]=Math.random()*6.28;fs_[i]=1;
+    target(i,0,tg);px[i]=qx[i]=tg[0];py[i]=qy[i]=tg[1];pz[i]=qz[i]=tg[2];vx[i]=tg[3];vy[i]=tg[4];vz[i]=tg[5];hx[i]=1;hy[i]=0}}
+function resize(){dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=cv.clientHeight;W2=W/2;CY=H*0.4;
+  cv.width=W*dpr|0;cv.height=H*dpr|0;gl.viewport(0,0,cv.width,cv.height);
+  XMIN=-W*0.5;cols=Math.ceil(W*2/R)+1;rows=Math.ceil(1000/R)+1;head=new Int32Array(cols*rows);drawBg();sampleText();init()}
+const ss=x=>x<=0?0:x>=1?1:x*x*x*(x*(6*x-15)+10);
+const T=34;function phase(t){const m=t%T;if(m<21)return 0;if(m<25.5)return(m-21)/4.5;if(m<29.5)return 1;return 1+(m-29.5)/4.5}
+let simT=0;
+// each bird blends three pulls: its place in the flowing flock, its 7 neighbours' heading, and a little personal space
+function step(dt){
+  simT+=dt;const t=simT;head.fill(-1);
+  for(let i=0;i<NB;i++){qx[i]=px[i];qy[i]=py[i];qz[i]=pz[i];
+    let cx=((px[i]-XMIN)/R)|0,cz=((pz[i]+500)/R)|0;cx=cx<0?0:cx>=cols?cols-1:cx;cz=cz<0?0:cz>=rows?rows-1:cz;const c=cz*cols+cx;nxt[i]=head[c];head[c]=i}
+  for(let i=0;i<NB;i++){
+    target(i,t,tg);const pxi=px[i],pyi=py[i],pzi=pz[i];
+    let n=0,mvx=0,mvy=0,mvz=0,sx=0,sy=0,sz=0;const gx=((pxi-XMIN)/R)|0,gz=((pzi+500)/R)|0;
+    outer:for(let o1=-1;o1<=1;o1++){const zz=gz+o1;if(zz<0||zz>=rows)continue;for(let o2=-1;o2<=1;o2++){const xx=gx+o2;if(xx<0||xx>=cols)continue;
+      for(let j=head[zz*cols+xx];j!==-1;j=nxt[j]){if(j===i)continue;const dx=px[j]-pxi,dy=py[j]-pyi,dz=pz[j]-pzi,d2=dx*dx+dy*dy+dz*dz;if(d2>R2)continue;
+        mvx+=vx[j];mvy+=vy[j];mvz+=vz[j];if(d2<S2){const q=(1-d2/S2);sx-=dx*q;sy-=dy*q;sz-=dz*q}if(++n>=K)break outer}}}
+    let ax=(tg[0]-pxi)*3+(tg[3]-vx[i])*2.5,ay=(tg[1]-pyi)*3+(tg[4]-vy[i])*2.5,az=(tg[2]-pzi)*3+(tg[5]-vz[i])*2.5;
+    if(n){const inv=1/n;ax+=(mvx*inv-vx[i])*1.5+sx*4;ay+=(mvy*inv-vy[i])*1.5+sy*4;az+=(mvz*inv-vz[i])*1.5+sz*4}
+    vx[i]+=ax*dt;vy[i]+=ay*dt;vz[i]+=az*dt;px[i]+=vx[i]*dt;py[i]+=vy[i]*dt;pz[i]+=vz[i]*dt;
+    const hvx=vx[i],hvy=vy[i]+vz[i]*0.2,hl=Math.sqrt(hvx*hvx+hvy*hvy);if(hl>3){hx[i]+=(hvx/hl-hx[i])*0.15;hy[i]+=(hvy/hl-hy[i])*0.15}}
+}
+let acc=0,last=0,wv0=-99,nextWave=5;
+function frame(now){
+  if(RENDER){var dt=STEP}else{if(!last)last=now;var dt=(now-last)/1000;last=now;if(dt>0.1)dt=0.1}
+  acc+=dt;let n=0;while(acc>=STEP&&n<3){step(STEP);acc-=STEP;n++}if(acc>STEP)acc=STEP;
+  const al=acc/STEP,t=simT+acc,ph=phase(t),gather=ph>0,rel=ph>1,dtf=Math.min(1,dt*3);
+  if(ph===0&&t>nextWave){wv0=t;nextWave=t+6+Math.random()*4}const wp=(t-wv0)*0.6;
+  for(let i=0;i<NB;i++){
+    const X=qx[i]+(px[i]-qx[i])*al,Y=qy[i]+(py[i]-qy[i])*al,Z=qz[i]+(pz[i]-qz[i])*al,s=F/(F+Z);
+    let x=W2+(X-W2)*s,y=CY+(Y-CY)*s+Z*0.2*s,sc=s,h1=hx[i],h2=hy[i],bi=0;
+    const wd=lg[i]-wp,roll=wd>-0.1&&wd<0.1?0.5+0.5*Math.cos(wd/0.1*Math.PI):0;
+    if(gather){bi=rel?1-ss((ph-1)*1.6-(1-dl[i])*0.6):ss(ph*1.6-dl[i]*0.6);
+      if(bi>0){let gx=tx[i],gy=ty[i];
+        if(rel){const bx=gx-W2,by=gy-H*0.4,bl=Math.sqrt(bx*bx+by*by)+1,k=50*(1-bi)/bl;gx+=bx*k;gy+=by*k}
+        else{gx+=Math.sin(t*1.5+fr[i])*0.2;gy+=Math.cos(t*1.2+fr[i])*0.2}
+        const dx=gx-x,dy=gy-y;x+=dx*bi;y+=dy*bi-Math.sin(Math.PI*bi)*22*(dl[i]-0.3);sc=s+(1-s)*bi;
+        if(bi<0.98){const l=Math.sqrt(dx*dx+dy*dy)+1e-3,w=Math.min(1,bi*(1-bi)*4);h1=h1*(1-w)+dx/l*w;h2=h2*(1-w)+dy/l*w}}}
+    if(x<16)x=16-(16-x)*0.2;else if(x>W-16)x=W-16+(x-W+16)*0.2;if(y<14)y=14-(14-y)*0.2;
+    const want=Math.sin(t*0.5+fr[i]*3)>-0.35?1:0;fs_[i]+=(want-fs_[i])*dtf;fl[i]+=dt*(16*fs_[i]+0.5);
+    const shade=Math.min(1,Math.max(0,(1.1-sc)/0.3))*(1-roll*0.9)*(1-bi);
+    const o=i*STR,l2=Math.sqrt(h1*h1+h2*h2)||1;inst[o]=x;inst[o+1]=y;inst[o+2]=(2.0+roll*0.8+bi*0.6)*sc;inst[o+3]=fl[i];inst[o+4]=h1/l2;inst[o+5]=h2/l2;inst[o+6]=shade}
+  gl.clear(gl.COLOR_BUFFER_BIT);gl.uniform2f(uRes,W,H);
+  gl.bindBuffer(gl.ARRAY_BUFFER,ibuf);gl.bufferSubData(gl.ARRAY_BUFFER,0,inst);
+  ext.drawArraysInstancedANGLE(gl.TRIANGLES,0,27,NB);
+  if(!RENDER)rafId=requestAnimationFrame(frame)}
+let rafId=0;
+if(!gl||!ext){document.getElementById('wrap').insertAdjacentHTML('beforeend','<p style="position:absolute;left:16px;top:16px;color:#fff">WebGL is not available in this browser.</p>')}
+else{setupGL();resize();if(!RENDER)requestAnimationFrame(frame)}
+// render API (used by render.mjs): advance the clock by dt seconds and draw one frame
+window.render=dt=>{cancelAnimationFrame(rafId);const n=Math.round(dt/STEP);for(let i=0;i<n;i++)step(STEP);acc=0;last=0;frame(0)};
+window.seek=s=>{const need=((s-(simT%T))%T+T)%T;const n=Math.round(need/STEP);for(let i=0;i<n;i++)step(STEP)};
+window.cycle=T;
+</script></body></html>
