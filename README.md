@@ -1,4 +1,4 @@
-# Jamie Parr
+<img src="header/murmuration.webp" alt="Jamie Parr" width="100%">
 
 Second-year Computing Technologies student at Ulster University in Belfast, looking for a 12-month placement in software, web development or IT from summer 2027.
 
