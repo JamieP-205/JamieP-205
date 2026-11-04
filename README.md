@@ -32,7 +32,7 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 ## Coursework
 
 - **[EOS delivery and quotation system](https://github.com/JamieP-205/eos-delivery-system)**: C# Windows Forms application with customer and package details, input validation, discounts and printable invoices. [Download the Windows app](https://github.com/JamieP-205/eos-delivery-system/releases/latest).
-- **[Armagh weather analysis](https://github.com/JamieP-205/armagh-weather-analysis)**: Excel and Python analysis of temperature, rainfall, sunshine and frost, with charts, CSV exports and tests for missing-data handling.
+- **[Armagh weather analysis](https://github.com/JamieP-205/armagh-weather-analysis)**: Excel and Python analysis of temperature, rainfall, sunshine and frost, with charts, CSV exports and tests for missing-data handling. [View the report](https://jamiep-205.github.io/armagh-weather-analysis/reports/).
 
 ## Currently
 
