@@ -40,6 +40,8 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 
 Studying Java this semester, and working on an Agile project in a team of five.
 
+I'm also preparing **[NexusDesk](https://jamieparr.dev/projects/nexusdesk/)** for a public release: a Java and Spring Boot helpdesk with support tickets, equipment records and staff accounts. It's a personal practice project based on a brief I wrote. The code is still private while the next version is being checked; the portfolio has a preview of the existing demo.
+
 ## Skills
 
 HTML, CSS, JavaScript, Node.js, Python, C#, SQL, Flask, SQLAlchemy, Excel, Git and GitHub, Netlify, Cloudflare Workers and Playwright.
