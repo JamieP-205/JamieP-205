@@ -24,9 +24,9 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/JamieP-205/eos-delivery-system"><img src="images/eos.png" alt="EOS delivery app with customer and package details beside a sample invoice"></a><br>
-<b><a href="https://github.com/JamieP-205/eos-delivery-system">EOS Delivery System</a></b><br>
-<sub>C# Windows Forms coursework app for delivery quotes and invoices. Includes input validation, discounts, invoice export and print preview, with 24 automated checks. <a href="https://github.com/JamieP-205/eos-delivery-system/releases/latest">Download the Windows app</a> · <a href="https://jamieparr.dev/projects/eos-delivery-system/">Case study</a></sub>
+<a href="https://jamieparr.dev/projects/nexusdesk/"><img src="https://raw.githubusercontent.com/JamieP-205/NexusDesk/main/docs/screenshots/dashboard.png" alt="NexusDesk helpdesk dashboard with fictional ticket totals and workload charts"></a><br>
+<b><a href="https://github.com/JamieP-205/NexusDesk">NexusDesk</a></b><br>
+<sub>Java and Spring Boot helpdesk based on my brief for a fictional company. Tickets, equipment records and three account roles, with SQL transactions and 72 automated tests. <a href="https://github.com/JamieP-205/NexusDesk/releases/tag/v0.2.0">Download the local demo</a> · <a href="https://jamieparr.dev/projects/nexusdesk/">Case study and video</a></sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://jamiep-205.github.io/armagh-weather-analysis/"><img src="images/armagh.png" alt="Charts of Armagh temperature, rainfall, sunshine and frost from 1853 to 2021"></a><br>
@@ -36,11 +36,13 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 </tr>
 </table>
 
+Also: [EOS Delivery System](https://github.com/JamieP-205/eos-delivery-system), a C# Windows Forms app based on my SRC coursework, with delivery quotes, invoice export and print preview.
+
 ## Currently
 
 Studying Java this semester, and working on an Agile project in a team of five.
 
-I'm also preparing **[NexusDesk](https://jamieparr.dev/projects/nexusdesk/)** for a public release: a Java and Spring Boot helpdesk with support tickets, equipment records and staff accounts. It's a personal practice project based on a brief I wrote. The code is still private while the next version is being checked; the portfolio has a preview of the existing demo.
+NexusDesk 0.2.0 is now public, with a downloadable demo and a code walkthrough. The repository documents how it was built.
 
 ## Skills
 
