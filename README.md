@@ -26,7 +26,7 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 <td width="50%" valign="top">
 <a href="https://jamieparr.dev/projects/nexusdesk/"><img src="https://raw.githubusercontent.com/JamieP-205/NexusDesk/main/docs/screenshots/dashboard.png" alt="NexusDesk helpdesk dashboard with fictional ticket totals and workload charts"></a><br>
 <b><a href="https://github.com/JamieP-205/NexusDesk">NexusDesk</a></b><br>
-<sub>Java and Spring Boot helpdesk based on my brief for a fictional company. Tickets, equipment records and three account roles, with SQL transactions and 72 automated tests. <a href="https://github.com/JamieP-205/NexusDesk/releases/tag/v0.2.0">Download the local demo</a> · <a href="https://jamieparr.dev/projects/nexusdesk/">Case study and video</a></sub>
+<sub>Java and Spring Boot helpdesk based on my brief for a fictional company. Tickets, equipment records and three account roles, with SQL transactions and 96 automated tests. <a href="https://github.com/JamieP-205/NexusDesk/releases/tag/v0.2.2">Download the local demo</a> · <a href="https://nexusdesk-demo-1tl6.onrender.com">Try in browser</a> · <a href="https://jamieparr.dev/projects/nexusdesk/">Case study and video</a></sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://jamiep-205.github.io/armagh-weather-analysis/"><img src="images/armagh.png" alt="Charts of Armagh temperature, rainfall, sunshine and frost from 1853 to 2021"></a><br>
@@ -42,7 +42,7 @@ Also: [EOS Delivery System](https://github.com/JamieP-205/eos-delivery-system), 
 
 Studying Java this semester, and working on an Agile project in a team of five.
 
-NexusDesk 0.2.0 is now public, with a downloadable demo and a code walkthrough. The repository documents how it was built.
+NexusDesk 0.2.2 is public, with browser access, a downloadable demo and a code walkthrough. The repository documents how it was built.
 
 ## Skills
 
