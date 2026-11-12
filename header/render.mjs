@@ -20,6 +20,10 @@ const arg = (name, fallback) => {
   return i === -1 ? fallback : process.argv[i + 1];
 };
 const theme = arg('theme', 'dark');
+if (theme !== 'dark' && theme !== 'light') {
+  console.error('Usage: node header/render.mjs [--theme dark|light] [--fps N] [--scale N] [--width N] [--height N]');
+  process.exit(1);
+}
 const fps = Number(arg('fps', 30));
 const scale = Number(arg('scale', 2));
 const width = Number(arg('width', 900));
