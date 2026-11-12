@@ -19,7 +19,7 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 <td width="50%" valign="top">
 <a href="https://github.com/JamieP-205/coast-requests"><img src="images/requests.webp" alt="Coast Requests board with three sample requests waiting"></a><br>
 <b><a href="https://github.com/JamieP-205/coast-requests">Coast Requests</a></b><br>
-<sub>Song requests from the Coast website, collected into one list the presenter works through on air. Python, Flask, SQLAlchemy; 23 pytest tests run on every push. <a href="https://jamieparr.dev/projects/coast-internet-radio/">Case study</a></sub>
+<sub>Song requests from the Coast website, collected into one list the presenter works through on air. Python, Flask, SQLAlchemy; 38 pytest tests run on every push. <a href="https://jamieparr.dev/projects/coast-internet-radio/">Case study</a></sub>
 </td>
 </tr>
 <tr>
