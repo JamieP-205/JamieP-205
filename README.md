@@ -14,7 +14,7 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 <td width="50%" valign="top">
 <a href="https://coastinternetradio.com"><img src="images/coast.webp" alt="Coast Internet Radio home page"></a><br>
 <b><a href="https://coastinternetradio.com">Coast Internet Radio</a></b><br>
-<sub>Website for a radio station in Newry: live player, now playing with album covers, and an editor so the presenter updates the site himself. JavaScript, nine Netlify Functions, Cloudflare Workers. Live since October 2026. <a href="https://github.com/JamieP-205/coast-radio">Code</a> · <a href="https://jamieparr.dev/projects/coast-internet-radio/">case study</a></sub>
+<sub>Website for a radio station in Newry: live player, now playing with album covers, and an editor so the presenter updates the site himself. JavaScript, nine Netlify Functions, Cloudflare Workers. Rebuilt in October 2026. <a href="https://github.com/JamieP-205/coast-radio">Code</a> · <a href="https://jamieparr.dev/projects/coast-internet-radio/">case study</a></sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/JamieP-205/coast-requests"><img src="images/requests.webp" alt="Coast Requests board with three sample requests waiting"></a><br>
@@ -26,7 +26,7 @@ Second-year Computing Technologies student at Ulster University in Belfast, look
 <td width="50%" valign="top">
 <a href="https://jamieparr.dev/projects/nexusdesk/"><img src="https://raw.githubusercontent.com/JamieP-205/NexusDesk/main/docs/screenshots/dashboard.png" alt="NexusDesk helpdesk dashboard with fictional ticket totals and workload charts"></a><br>
 <b><a href="https://github.com/JamieP-205/NexusDesk">NexusDesk</a></b><br>
-<sub>Java and Spring Boot helpdesk based on my brief for a fictional company. Tickets, equipment records and three account roles, with SQL transactions and 96 automated tests. <a href="https://github.com/JamieP-205/NexusDesk/releases/tag/v0.2.2">Download the local demo</a> · <a href="https://nexusdesk-demo-1tl6.onrender.com">Try in browser</a> · <a href="https://jamieparr.dev/projects/nexusdesk/">Case study and video</a></sub>
+<sub>Java and Spring Boot helpdesk based on my brief for a fictional company. Tickets, equipment records and three account roles, with SQL transactions and automated tests. <a href="https://github.com/JamieP-205/NexusDesk/releases/tag/v0.2.2">Download the local demo</a> · <a href="https://nexusdesk-demo-1tl6.onrender.com">Try in browser</a> · <a href="https://jamieparr.dev/projects/nexusdesk/">Case study and video</a></sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://jamiep-205.github.io/armagh-weather-analysis/"><img src="images/armagh.png" alt="Charts of Armagh temperature, rainfall, sunshine and frost from 1853 to 2021"></a><br>
@@ -40,7 +40,7 @@ Also: [EOS Delivery System](https://github.com/JamieP-205/eos-delivery-system), 
 
 ## Currently
 
-Studying Java this semester, and working on an Agile project in a team of five.
+Studying Java this semester, and working on an Agile project in a team of five. Starting a part-time weekend Retail Assistant role at Primark Belfast on 14 November 2026.
 
 NexusDesk 0.2.2 is public, with browser access, a downloadable demo and a code walkthrough. The repository documents how it was built.
 
